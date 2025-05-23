@@ -1,10 +1,240 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
-    <title>Welcome to Stampify</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>किरायेदारी अनुबंध फॉर्म</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Hind', sans-serif;
+      background-color: #f4f7f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px 40px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    h2, h3 {
+      text-align: center;
+      color: #333;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    label {
+      margin-top: 15px;
+      display: block;
+      color: #333;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+      margin-right: 8px;
+    }
+
+    button {
+      background-color: #0275d8;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #025aa5;
+    }
+
+    .disabled input,
+    .disabled button,
+    .disabled select {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .checkbox-wrapper {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    hr {
+      margin: 30px 0;
+      border: 1px solid #ddd;
+    }
+
+    /* Video & Image preview styling */
+    #video, #photo {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #preview {
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Stampify is Live 🚀</h1>
-    <p>Use the form to generate your PDF contract.</p>
+  <div class="container">
+    <h2>किरायेदारी अनुबंध की शर्तें</h2>
+    <p>मैं, किरायेदार __________________________ (पूरा नाम),<br>
+    पुत्र/पुत्री __________________________,<br>
+    निवासी __________________________,<br>
+    इस अनुबंध के माध्यम से निम्नलिखित शर्तों एवं नियमों का पालन करने हेतु पूर्ण रूप से सहमत हूँ:</p>
+
+    <ul>
+      <li>मैं हर महीने का किराया निर्धारित तिथि (प्रत्येक माह की 5 तारीख) तक मकान मालिक को समय पर जमा करूंगा।</li>
+      <li>मैं कमरा खाली करने की स्थिति में कम से कम एक (1) माह पूर्व लिखित सूचना मकान मालिक को दूंगा। यदि मैं ऐसा नहीं करता, तो मैं अगले महीने का पूरा किराया जमा करूंगा।</li>
+      <li>मैं अपने किराए के कमरे में किसी भी बाहरी व्यक्ति को बिना मकान मालिक की पूर्व अनुमति के नहीं ठहराऊंगा। यदि मैं ऐसा करता हूं, तो एक व्यक्ति के लिए प्रति रात ₹200/- के हिसाब से अतिरिक्त शुल्क जमा करूंगा।</li>
+      <li>मैं कमरे में वॉटर हीटर, इंडक्शन या किसी अन्य भारी विद्युत उपकरण का उपयोग नहीं करूंगा। यदि मैं ऐसा करता हुआ पाया जाता हूँ, तो मकान मालिक मुझे किसी भी समय कमरा खाली करने के लिए बाध्य कर सकते हैं।</li>
+      <li>मेरे द्वारा किराए के कमरे या उसमें उपलब्ध किसी भी वस्तु की कोई भी तोड़-फोड़ या क्षति होती है, तो उससे संबंधित संपूर्ण मरम्मत/बदलाव का खर्च मैं स्वयं वहन करूंगा और मकान मालिक को उसकी भरपाई करूंगा।</li>
+      <li>मैं दीवारों पर कील ठोकने, पेंट/प्लास्टर को नुकसान पहुंचाने या कोई स्थायी परिवर्तन करने का कार्य नहीं करूंगा। यदि ऐसा करता हूँ तो उसका खर्च मेरी जमा राशि से काटा जाएगा या मुझे अलग से भुगतान करना होगा।</li>
+      <li>मैं कमरे में साफ-सफाई बनाए रखूंगा और कोई अवैध कार्य नहीं करूंगा।</li>
+      <li>उल्लंघन पर मकान मालिक बिना सूचना के कमरा खाली करवा सकते हैं और जमा राशि समायोजित कर सकते हैं।</li>
+    </ul>
+
+    <div class="checkbox-wrapper">
+      <label>
+        <input type="checkbox" id="agreeCheck"> मैं उपरोक्त शर्तों से सहमत हूँ
+      </label>
+    </div>
+
+    <hr>
+
+    <form id="tenantForm" class="disabled" action="http://localhost:8000/generate-pdf/" method="post" enctype="multipart/form-data">
+      <h3>किरायेदार विवरण</h3>
+
+      <label>पूरा नाम:</label>
+      <input type="text" name="name" required>
+
+      <label>पिता/पति का नाम:</label>
+      <input type="text" name="father_name" required>
+
+      <label>स्थायी पता:</label>
+      <input type="text" name="address" required>
+
+      <label>आधार कार्ड नंबर:</label>
+      <input type="text" name="aadhaar" required pattern="\d{12}">
+
+      <label>आधार कार्ड की सामने की तरफ की फोटो (JPG/PNG):</label>
+      <input type="file" name="aadhaar_front" accept="image/*" required>
+
+      <label>आधार कार्ड की पीछे की तरफ की फोटो (JPG/PNG):</label>
+      <input type="file" name="aadhaar_back" accept="image/*" required>
+
+      <label>पैन कार्ड नंबर:</label>
+      <input type="text" name="pan" required pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}">
+
+      <label>पैन कार्ड की फोटो (JPG/PNG):</label>
+      <input type="file" name="pan_card" accept="image/*" required>
+
+      <label>मोबाइल नंबर:</label>
+      <input type="text" name="mobile" required pattern="\d{10}">
+
+      <label>किरायेदार हस्ताक्षर (JPG/PNG):</label>
+      <input type="file" name="signature" accept="image/*" required>
+
+      <label>किरायेदार की सेल्फी लें:</label>
+      <video id="video" width="320" height="240" autoplay style="display:none;"></video>
+      <br>
+      <button type="button" id="snap">कैमरा चालू करें</button>
+      <button type="button" id="capture" disabled>सेल्फी क्लिक करें</button>
+
+      <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+
+      <div id="preview" style="margin-top:10px;">
+        <p>सेल्फी प्रीव्यू:</p>
+        <img id="photo" alt="Selfie Preview" style="width:320px; height:240px; border:1px solid #ccc; border-radius:5px;">
+      </div>
+
+      <input type="hidden" name="selfieImage" id="selfieImage">
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const checkbox = document.getElementById('agreeCheck');
+    const form = document.getElementById('tenantForm');
+
+    checkbox.addEventListener('change', function () {
+      if (this.checked) {
+        form.classList.remove('disabled');
+      } else {
+        form.classList.add('disabled');
+      }
+    });
+
+    const video = document.getElementById('video');
+    const snapBtn = document.getElementById('snap');
+    const captureBtn = document.getElementById('capture');
+    const canvas = document.getElementById('canvas');
+    const photo = document.getElementById('photo');
+    const selfieImageInput = document.getElementById('selfieImage');
+    let stream;
+
+    snapBtn.addEventListener('click', async () => {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+        video.srcObject = stream;
+        video.style.display = 'block';
+        captureBtn.disabled = false;
+        snapBtn.disabled = true;
+      } catch (err) {
+        alert('कैमरा एक्सेस नहीं मिला। कृपया अनुमति दें।');
+        console.error(err);
+      }
+    });
+
+    captureBtn.addEventListener('click', () => {
+      const context = canvas.getContext('2d');
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      const dataURL = canvas.toDataURL('image/png');
+
+      photo.src = dataURL;
+      selfieImageInput.value = dataURL;
+
+      // कैमरा बंद करें
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+      video.srcObject = null;
+      video.style.display = 'none';
+
+      captureBtn.disabled = true;
+      snapBtn.disabled = false;
+    });
+  </script>
 </body>
 </html>
