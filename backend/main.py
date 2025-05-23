@@ -23,6 +23,10 @@ templates = Jinja2Templates(directory=str(TEMPLATE_DIR))
 async def favicon():
     return FileResponse(STATIC_DIR / "favicon.ico")
 
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
 @app.post("/generate-pdf/", response_class=HTMLResponse)
 async def generate_pdf(
     request: Request,
