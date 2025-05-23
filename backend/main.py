@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Form, UploadFile, File, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pathlib import Path
@@ -17,6 +17,11 @@ TEMPLATE_DIR = BASE_DIR / "template"
 # Static और template फोल्डर mount
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 templates = Jinja2Templates(directory=str(TEMPLATE_DIR))
+
+# ✅ Favicon route to avoid 404 error
+@app.get("/favicon.ico")
+async def favicon():
+    return FileResponse(STATIC_DIR / "favicon.ico")
 
 @app.post("/generate-pdf/", response_class=HTMLResponse)
 async def generate_pdf(
@@ -52,7 +57,7 @@ async def generate_pdf(
     save_uploadfile(signature, user_dir / f"signature{Path(signature.filename).suffix}")
 
     # सेल्फी (base64) decode करके सेव करें
-    selfie_data = selfieImage.split(",")[-1]  # "data:image/png;base64,...." से सिर्फ base64 वाला हिस्सा लें
+    selfie_data = selfieImage.split(",")[-1]
     selfie_bytes = base64.b64decode(selfie_data)
     selfie_path = user_dir / "selfie.png"
     with open(selfie_path, "wb") as f:
