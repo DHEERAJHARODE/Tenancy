@@ -13,6 +13,8 @@ BASE_DIR = Path(__file__).resolve().parent
 GENERATED_DIR = BASE_DIR / "generated_files"  # safer directory for uploads
 TEMPLATE_DIR = BASE_DIR / "template"
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 app.mount("/generated_files", StaticFiles(directory=str(GENERATED_DIR)), name="generated_files")
 templates = Jinja2Templates(directory=str(TEMPLATE_DIR))
 
