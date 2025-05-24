@@ -10,10 +10,10 @@ import base64
 app = FastAPI()
 
 BASE_DIR = Path(__file__).resolve().parent
-STATIC_DIR = BASE_DIR / "static"
+GENERATED_DIR = BASE_DIR / "generated_files"  # safer directory for uploads
 TEMPLATE_DIR = BASE_DIR / "template"
 
-app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+app.mount("/generated_files", StaticFiles(directory=str(GENERATED_DIR)), name="generated_files")
 templates = Jinja2Templates(directory=str(TEMPLATE_DIR))
 
 @app.get("/", response_class=HTMLResponse)
@@ -35,8 +35,9 @@ async def generate_pdf(
     pan_card: UploadFile = File(...),
     selfieImage: str = Form(...)
 ):
+    # Create a safe folder name
     safe_name = "".join(c for c in name if c.isalnum() or c in (" ", "_")).strip().replace(" ", "_")
-    user_dir = STATIC_DIR / safe_name
+    user_dir = GENERATED_DIR / safe_name
     os.makedirs(user_dir, exist_ok=True)
 
     def save_uploadfile(uploadfile: UploadFile, destination: Path):
@@ -48,12 +49,14 @@ async def generate_pdf(
     save_uploadfile(pan_card, user_dir / f"pan_card{Path(pan_card.filename).suffix}")
     save_uploadfile(signature, user_dir / f"signature{Path(signature.filename).suffix}")
 
+    # Save base64 selfie
     selfie_data = selfieImage.split(",")[-1]
     selfie_bytes = base64.b64decode(selfie_data)
     with open(user_dir / "selfie.png", "wb") as f:
         f.write(selfie_bytes)
 
-    base_url = f"/static/{safe_name}"
+    # Set file URL path for template
+    base_url = f"/generated_files/{safe_name}"
     return templates.TemplateResponse("contract_display.html", {
         "request": request,
         "name": name,
