@@ -4,181 +4,24 @@
   <meta charset="UTF-8" />
   <title>Agreement</title>
   <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Hind', sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-    }
-
-    .page {
-      width: 210mm;
-      min-height: 297mm;
-      background-color: white;
-      padding: 2px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .logo-container {
-      width: 100%;
-      margin-bottom: 0;
-      text-align: left;
-      padding: 0;
-    }
-
-    .logo-container img {
-      width: 100%;
-      display: block;
-      margin: 0;
-    }
-
-    .content {
-      width: 100%;
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.08);
-      color: #333;
-      font-size: 18px;
-      line-height: 1.4;
-      margin: 0 auto;
-    }
-
-    h1 {
-      text-align: center;
-      font-weight: 600;
-      font-size: 28px;
-      margin: 0;
-    }
-
-    p, li {
-      margin: 8px 0;
-    }
-
-    ul {
-      margin: 15px 0 25px 20px;
-      padding-left: 0;
-    }
-
-    ul li {
-      margin-bottom: 10px;
-    }
-
-    .signature {
-      margin-top: 40px;
-      text-align: right;
-    }
-
-    .signature img {
-      width: 160px;
-      height: auto;
-      border: 1px solid #ccc;
-      padding: 5px;
-      border-radius: 5px;
-      background: #fff;
-    }
-
-    .print-btn {
-      position: fixed;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      z-index: 1000;
-    }
-
-    button {
-      padding: 12px 25px;
-      font-size: 16px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-    
-    @media print {
-  body {
-    background: none !important;
-    padding: 0;
-    display: block;
-  }
-
-  .print-btn {
-    display: none;
-  }
-
-  .page {
-    box-shadow: none;
-    margin: 0;
-    border-radius: 0;
-    padding: 2mm; /* पहले 20mm था, अब 0 कर दिया */
-    width: 210mm;
-    min-height: 297mm;
-  }
-
-  .content {
-    box-shadow: none;
-    background-color: transparent !important;
-  }
-
-  /* Hide debug borders in print */
-  .page,
-  .logo-container,
-  .content,
-  .signature,
-  .print-btn,
-  body {
-    border: none !important;
-  }
-}
-
-    @media screen and (max-width: 768px) {
-      .page {
-        width: 100%;
-        min-height: auto;
-        box-shadow: none;
-      }
-
-      .content {
-        max-width: 100%;
-        padding: 20px;
-        font-size: 16px;
-      }
-
-      .logo-container {
-        width: 100%;
-        margin-bottom: 20px;
-      }
-
-      .signature img {
-        width: 120px;
-      }
-    }
-    @page {
-      margin: 0;
-      size: A4;
-    }
-
+    * { box-sizing: border-box; }
+    body { font-family: 'Hind', sans-serif; background-color: #f5f5f5; margin:0; display:flex; justify-content:center; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; }
+    .page { width: 210mm; min-height: 297mm; background:white; padding:2px; box-shadow:0 0 20px rgba(0,0,0,0.1); border-radius:10px; display:flex; flex-direction:column; }
+    .logo-container img { width:100%; display:block; margin:0; }
+    .content { width:100%; background-color: rgba(255,255,255,0.95); padding:20px; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.08); color:#333; font-size:18px; line-height:1.4; }
+    h1 { text-align:center; font-weight:600; font-size:28px; margin:0; }
+    .signature { margin-top:40px; text-align:right; }
+    .signature img { width:160px; border:1px solid #ccc; padding:5px; border-radius:5px; background:#fff; }
+    .btn-group { position:fixed; bottom:20px; left:0; right:0; text-align:center; z-index:1000; }
+    button { padding:12px 25px; font-size:16px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer; margin:0 8px; transition:0.3s; }
+    button:hover { background:#0056b3; }
+    @media screen and (max-width:768px){ .page{width:100%; min-height:auto; box-shadow:none;} .content{font-size:16px;} .signature img{width:120px;} }
   </style>
 </head>
-<body>
-  <div class="page">
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+  <div class="page" id="capture-area">
     <div class="logo-container">
       <img src="/static/signature/logo.jpg" alt="Company Logo" />
     </div>
@@ -211,8 +54,49 @@
     </div>
   </div>
 
-  <div class="print-btn">
-    <button onclick="window.print()">प्रिंट करें</button>
+  <div class="btn-group">
+    <button id="uploadPageBtn">Upload & Save Agreement</button>
   </div>
+
+  <script>
+    document.getElementById("uploadPageBtn").addEventListener("click", async () => {
+      const btn = document.getElementById("uploadPageBtn");
+      btn.disabled = true;
+      btn.innerText = "Uploading...";
+
+      try {
+        const captureArea = document.getElementById("capture-area");
+        const canvas = await html2canvas(captureArea, { scale: 2, useCORS: true });
+        const imageBlob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+
+        const formData = new FormData();
+        formData.append("image", imageBlob, "agreement_page.png");
+        formData.append("name", "{{ name }}");
+
+        const res = await fetch("/upload-page-image/", { method:"POST", body:formData });
+        const data = await res.json();
+
+        if(data.url){
+          alert("✅ Agreement successfully uploaded!\nURL: " + data.url);
+           // ✅ Success: Show thank you message in current page
+          document.body.innerHTML = `
+            <div style="display:flex; justify-content:center; align-items:center; height:100vh; text-align:center; flex-direction:column; font-family:'Hind',sans-serif; background:#f0f0f0; padding:20px;">
+              <h1 style="color:#007bff;">धन्यवाद!</h1>
+              <p style="font-size:18px; margin-top:10px;">
+                आपके समय के लिए धन्यवाद।<br>
+                कृपया सभी नियमों और शर्तों का पालन करें।
+              </p>
+            </div>`;
+        } else {
+          alert("❌ Upload failed: " + data.error);
+        }
+      } catch(err){
+        alert("❌ Error: " + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "Upload & Save Agreement";
+      }
+    });
+  </script>
 </body>
 </html>
